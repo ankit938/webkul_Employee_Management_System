@@ -15,6 +15,7 @@
             <input type="text" name="full_name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             <input type="number" name="age" placeholder="Age" required>
 
             <div id="qualifications">
@@ -43,6 +44,8 @@
 
             <label>Upload Profile Picture</label>
             <input type="file" name="profile_picture" required>
+            
+            <div style="margin-top: 20px;"></div> <!-- Added gap -->
 
             <button type="submit" name="signup">Signup</button>
         </form>
@@ -68,20 +71,23 @@
 if (isset($_POST['signup'])) {
     $full_name = $_POST['full_name'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
     $age = $_POST['age'];
     $qualifications = implode(',', $_POST['qualifications']);
     $experiences = implode(',', $_POST['experiences']);
     $permanent_address = $_POST['permanent_address_line1'] . ', ' . $_POST['permanent_city'] . ', ' . $_POST['permanent_state'];
     $current_address = $_POST['current_address_line1'] . ', ' . $_POST['current_city'] . ', ' . $_POST['current_state'];
-
     $profile_picture = $_FILES['profile_picture']['name'];
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($profile_picture);
 
-    if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
+    if ($password !== $confirm_password) {
+        echo "Passwords do not match.";
+    } elseif (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $query = "INSERT INTO users (full_name, email, password, age, qualifications, experiences, permanent_address, current_address, profile_picture)
-                  VALUES ('$full_name', '$email', '$password', '$age', '$qualifications', '$experiences', '$permanent_address', '$current_address', '$profile_picture')";
+                  VALUES ('$full_name', '$email', '$hashed_password', '$age', '$qualifications', '$experiences', '$permanent_address', '$current_address', '$profile_picture')";
 
         if ($conn->query($query) === TRUE) {
             echo "Signup successful!";
