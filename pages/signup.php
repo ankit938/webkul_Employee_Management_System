@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Signup</title>
+    <style>
+        select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+    </style>
 </head>
 <body>
     <div class="signup-container">
@@ -34,13 +44,27 @@
             <input type="text" name="permanent_address_line1" placeholder="Address Line 1" required>
             <input type="text" name="permanent_address_line2" placeholder="Address Line 2">
             <input type="text" name="permanent_city" placeholder="City" required>
-            <input type="text" name="permanent_state" placeholder="State" required>
+            <select name="permanent_state" required>
+                <option value="">Select State</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Other">Other</option>
+            </select><br>
 
             <label>Current Address</label>
             <input type="text" name="current_address_line1" placeholder="Address Line 1" required>
             <input type="text" name="current_address_line2" placeholder="Address Line 2">
             <input type="text" name="current_city" placeholder="City" required>
-            <input type="text" name="current_state" placeholder="State" required>
+            <select name="current_state" required>
+                <option value="">Select State</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Other">Other</option>
+            </select><br>
 
             <label>Upload Profile Picture</label>
             <input type="file" name="profile_picture" required>

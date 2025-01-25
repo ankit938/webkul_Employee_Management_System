@@ -25,13 +25,20 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Include Font Awesome for the pencil icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>User Profile</title>
 </head>
 <body>
     <div class="profile-container">
         <h2>User Profile</h2>
         <div class="profile-card">
-            <img src="../uploads/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
+            <div class="profile-img-container">
+                <img src="../uploads/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
+                <!-- Edit Profile link as a pencil icon -->
+                <a href="edit_profile.php" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+            </div>
+
             <h3><?php echo $user['full_name']; ?></h3>
             <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
             <p><strong>Age:</strong> <?php echo $user['age']; ?></p>
