@@ -25,6 +25,7 @@ if (isset($_POST['update_profile'])) {
     $experiences = implode(',', $_POST['experiences']);
     $permanent_address = $_POST['permanent_address_line1'] . ', ' . $_POST['permanent_city'] . ', ' . $_POST['permanent_state'];
     $current_address = $_POST['current_address_line1'] . ', ' . $_POST['current_city'] . ', ' . $_POST['current_state'];
+    $date_of_birth = $_POST['date_of_birth']; // Get the updated date of birth
     
     if (!empty($_FILES['profile_picture']['name'])) {
         // Handle profile picture upload
@@ -33,13 +34,13 @@ if (isset($_POST['update_profile'])) {
         $target_file = $target_dir . basename($profile_picture);
         
         if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
-            $update_query = "UPDATE users SET age='$age', qualifications='$qualifications', experiences='$experiences', permanent_address='$permanent_address', current_address='$current_address', profile_picture='$profile_picture' WHERE id='$user_id'";
+            $update_query = "UPDATE users SET age='$age', qualifications='$qualifications', experiences='$experiences', permanent_address='$permanent_address', current_address='$current_address', date_of_birth='$date_of_birth', profile_picture='$profile_picture' WHERE id='$user_id'";
         } else {
             echo "Failed to upload profile picture.";
             exit;
         }
     } else {
-        $update_query = "UPDATE users SET age='$age', qualifications='$qualifications', experiences='$experiences', permanent_address='$permanent_address', current_address='$current_address' WHERE id='$user_id'";
+        $update_query = "UPDATE users SET age='$age', qualifications='$qualifications', experiences='$experiences', permanent_address='$permanent_address', current_address='$current_address', date_of_birth='$date_of_birth' WHERE id='$user_id'";
     }
 
     if ($conn->query($update_query) === TRUE) {
@@ -57,6 +58,15 @@ if (isset($_POST['update_profile'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Edit Profile</title>
+    <style>
+        #date_of_birth{
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <div class="profile-container">
@@ -64,7 +74,12 @@ if (isset($_POST['update_profile'])) {
         <form action="edit_profile.php" method="POST" enctype="multipart/form-data">
             <div class="profile-card">
                 <h3><?php echo $user['full_name']; ?></h3>
-                <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
+                <p><strong>Email:</strong> <?php echo $user['email']; ?></p><br>
+
+                <!-- Date of Birth -->
+<label for="date_of_birth">Date of Birth:</label>
+<input type="date" name="date_of_birth" id="date_of_birth" 
+       value="<?php echo $user['date_of_birth']; ?>" required>
 
                 <label for="age">Age:</label>
                 <input type="number" name="age" id="age" value="<?php echo $user['age']; ?>" required>

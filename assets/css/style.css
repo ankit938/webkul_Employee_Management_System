@@ -8,7 +8,7 @@ body {
 .signup-container, .login-container, .profile-container {
     max-width: 400px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 50px;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -84,7 +84,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 /* Button styling */
@@ -94,7 +94,7 @@ button {
     border: none;
     cursor: pointer;
     padding: 12px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 4px;
     width: 100%;
     margin-top: 15px;
@@ -124,7 +124,7 @@ button[type="button"] {
     border: none;
     cursor: pointer;
     padding: 10px;
-    font-size: 14px;
+    font-size: 18px;
     border-radius: 4px;
     width: 100%;
     margin-top: 10px;
