@@ -73,6 +73,8 @@
             <div style="margin-top: 20px;"></div> <!-- Added gap -->
 
             <button type="submit" name="signup">Signup</button>
+            
+<p>Don't have an account? <a href="login.php" style="display: inline;">Log In here</a></p>
         </form>
     </div>
 
