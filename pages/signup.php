@@ -74,7 +74,7 @@
 
             <button type="submit" name="signup">Signup</button>
             
-<p>Don't have an account? <a href="login.php" style="display: inline;">Log In here</a></p>
+<p>Don't have an account? <a href="login.php" style="display: inline; text-align:center;">Log In Here</a></p>
         </form>
     </div>
 
@@ -91,6 +91,8 @@
             document.getElementById('experiences').appendChild(div);
         }
     </script>
+    <script src="../assets/script/password.js"></script>
+
 </body>
 </html>
 

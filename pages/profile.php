@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
                 <a href="edit_profile.php" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
             </div>
 
-            <h3><?php echo htmlspecialchars($user['full_name']); ?></h3>
+            <h3><?php echo htmlspecialchars($user['full_name']); ?></h3><br>
             <p><strong>Date of Birth:</strong> 
                 <?php echo isset($user['date_of_birth']) && !empty($user['date_of_birth']) ? htmlspecialchars($user['date_of_birth']) : 'Not provided'; ?>
             </p>

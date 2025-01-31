@@ -49,6 +49,13 @@ if (isset($_POST['update_profile'])) {
         echo "Error: " . $conn->error;
     }
 }
+
+// **Fix for Undefined Array Key Warning**
+$permanent_address_parts = explode(',', $user['permanent_address']);
+$permanent_state = isset($permanent_address_parts[2]) ? trim($permanent_address_parts[2]) : '';
+
+$current_address_parts = explode(',', $user['current_address']);
+$current_state = isset($current_address_parts[2]) ? trim($current_address_parts[2]) : '';
 ?>
 
 <!DOCTYPE html>
@@ -77,9 +84,9 @@ if (isset($_POST['update_profile'])) {
                 <p><strong>Email:</strong> <?php echo $user['email']; ?></p><br>
 
                 <!-- Date of Birth -->
-<label for="date_of_birth">Date of Birth:</label>
-<input type="date" name="date_of_birth" id="date_of_birth" 
-       value="<?php echo $user['date_of_birth']; ?>" required>
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" name="date_of_birth" id="date_of_birth" 
+                       value="<?php echo $user['date_of_birth']; ?>" required>
 
                 <label for="age">Age:</label>
                 <input type="number" name="age" id="age" value="<?php echo $user['age']; ?>" required>
@@ -107,27 +114,27 @@ if (isset($_POST['update_profile'])) {
                 <button type="button" onclick="addExperience()">Add More</button>
 
                 <label>Permanent Address:</label>
-                <input type="text" name="permanent_address_line1" value="<?php echo explode(',', $user['permanent_address'])[0]; ?>" required>
-                <input type="text" name="permanent_address_line2" value="<?php echo explode(',', $user['permanent_address'])[1] ?? ''; ?>">
-                <input type="text" name="permanent_city" value="<?php echo explode(',', $user['permanent_address'])[2]; ?>" required>
+                <input type="text" name="permanent_address_line1" value="<?php echo $permanent_address_parts[0] ?? ''; ?>" required>
+                <input type="text" name="permanent_address_line2" value="<?php echo $permanent_address_parts[1] ?? ''; ?>">
+                <input type="text" name="permanent_city" value="<?php echo $permanent_address_parts[2] ?? ''; ?>" required>
                 <select name="permanent_state" required>
-                    <option value="Uttar Pradesh" <?php echo ($user['permanent_state'] == 'Uttar Pradesh') ? 'selected' : ''; ?>>Uttar Pradesh</option>
-                    <option value="Bihar" <?php echo ($user['permanent_state'] == 'Bihar') ? 'selected' : ''; ?>>Bihar</option>
-                    <option value="Delhi" <?php echo ($user['permanent_state'] == 'Delhi') ? 'selected' : ''; ?>>Delhi</option>
-                    <option value="Maharashtra" <?php echo ($user['permanent_state'] == 'Maharashtra') ? 'selected' : ''; ?>>Maharashtra</option>
-                    <option value="Other" <?php echo ($user['permanent_state'] == 'Other') ? 'selected' : ''; ?>>Other</option>
+                    <option value="Uttar Pradesh" <?php echo ($permanent_state == 'Uttar Pradesh') ? 'selected' : ''; ?>>Uttar Pradesh</option>
+                    <option value="Bihar" <?php echo ($permanent_state == 'Bihar') ? 'selected' : ''; ?>>Bihar</option>
+                    <option value="Delhi" <?php echo ($permanent_state == 'Delhi') ? 'selected' : ''; ?>>Delhi</option>
+                    <option value="Maharashtra" <?php echo ($permanent_state == 'Maharashtra') ? 'selected' : ''; ?>>Maharashtra</option>
+                    <option value="Other" <?php echo ($permanent_state == 'Other') ? 'selected' : ''; ?>>Other</option>
                 </select>
 
                 <label>Current Address:</label>
-                <input type="text" name="current_address_line1" value="<?php echo explode(',', $user['current_address'])[0]; ?>" required>
-                <input type="text" name="current_address_line2" value="<?php echo explode(',', $user['current_address'])[1] ?? ''; ?>">
-                <input type="text" name="current_city" value="<?php echo explode(',', $user['current_address'])[2]; ?>" required>
+                <input type="text" name="current_address_line1" value="<?php echo $current_address_parts[0] ?? ''; ?>" required>
+                <input type="text" name="current_address_line2" value="<?php echo $current_address_parts[1] ?? ''; ?>">
+                <input type="text" name="current_city" value="<?php echo $current_address_parts[2] ?? ''; ?>" required>
                 <select name="current_state" required>
-                    <option value="Uttar Pradesh" <?php echo ($user['current_state'] == 'Uttar Pradesh') ? 'selected' : ''; ?>>Uttar Pradesh</option>
-                    <option value="Bihar" <?php echo ($user['current_state'] == 'Bihar') ? 'selected' : ''; ?>>Bihar</option>
-                    <option value="Delhi" <?php echo ($user['current_state'] == 'Delhi') ? 'selected' : ''; ?>>Delhi</option>
-                    <option value="Maharashtra" <?php echo ($user['current_state'] == 'Maharashtra') ? 'selected' : ''; ?>>Maharashtra</option>
-                    <option value="Other" <?php echo ($user['current_state'] == 'Other') ? 'selected' : ''; ?>>Other</option>
+                    <option value="Uttar Pradesh" <?php echo ($current_state == 'Uttar Pradesh') ? 'selected' : ''; ?>>Uttar Pradesh</option>
+                    <option value="Bihar" <?php echo ($current_state == 'Bihar') ? 'selected' : ''; ?>>Bihar</option>
+                    <option value="Delhi" <?php echo ($current_state == 'Delhi') ? 'selected' : ''; ?>>Delhi</option>
+                    <option value="Maharashtra" <?php echo ($current_state == 'Maharashtra') ? 'selected' : ''; ?>>Maharashtra</option>
+                    <option value="Other" <?php echo ($current_state == 'Other') ? 'selected' : ''; ?>>Other</option>
                 </select>
 
                 <label>Upload New Profile Picture (optional):</label>

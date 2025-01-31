@@ -70,6 +70,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
 /* Align labels to the left */
 label {
     display: block;
@@ -114,9 +115,6 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     padding: 20px;
 }
 
-/* Profile card styling */
-
-
 /* Adjust the 'add more' buttons to be consistent */
 button[type="button"] {
     background-color: #007bff;
@@ -132,4 +130,34 @@ button[type="button"] {
 
 button[type="button"]:hover {
     background-color: #0056b3;
+}
+
+/* Profile Image and Edit Pencil Icon Fix */
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+}
+
+.profile-img-container .edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.profile-img-container .edit-icon:hover {
+    color: #0056b3;
 }
