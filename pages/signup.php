@@ -74,7 +74,7 @@
 
             <button type="submit" name="signup">Signup</button>
             
-<p>Don't have an account? <a href="login.php" style="display: inline; text-align:center;">Log In Here</a></p>
+<p>Have an account? <a href="login.php" style="display: inline; text-align:center;">Log In Here</a></p>
         </form>
     </div>
 
