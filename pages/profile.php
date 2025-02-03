@@ -39,14 +39,14 @@ if ($result->num_rows > 0) {
                 <a href="edit_profile.php" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
             </div>
 
-            <h3><?php echo htmlspecialchars($user['full_name']); ?></h3><br>
+            <h3><?php echo htmlspecialchars($user['full_name']); ?></h3>
+            <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p><br><hr><br>
             <p><strong>Date of Birth:</strong> 
                 <?php echo isset($user['date_of_birth']) && !empty($user['date_of_birth']) ? htmlspecialchars($user['date_of_birth']) : 'Not provided'; ?>
             </p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
             <p><strong>Age:</strong> <?php echo htmlspecialchars($user['age']); ?></p>
             <p><strong>Qualifications:</strong> <?php echo htmlspecialchars($user['qualifications']); ?></p>
-            <p><strong>Experiences:</strong> <?php echo htmlspecialchars($user['experiences']); ?></p>
+            <p><strong>Experiences:</strong> <?php echo htmlspecialchars($user['experiences']); ?></p><br><hr><br>
             <p><strong>Permanent Address:</strong> <?php echo htmlspecialchars($user['permanent_address']); ?></p>
             <p><strong>Current Address:</strong> <?php echo htmlspecialchars($user['current_address']); ?></p>
         </div>
