@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
         <h2>User Profile</h2>
         <div class="profile-card">
             <div class="profile-img-container">
-                <img src="../uploads/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
+                <img src="../uploads/<?php echo $user['profile_picture']; ?>" alt="Profile Picture"> 
                 <a href="edit_profile.php" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
             </div>
 

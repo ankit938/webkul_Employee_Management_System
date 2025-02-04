@@ -44,7 +44,7 @@ if (isset($_POST['update_profile'])) {
     }
 
     if ($conn->query($update_query) === TRUE) {
-        echo "Profile updated successfully!";
+        echo "<h2  style='color:green; padding:5px;'>Profile updated successfully!</h2>";
     } else {
         echo "Error: " . $conn->error;
     }
