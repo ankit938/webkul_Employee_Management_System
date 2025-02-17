@@ -83,7 +83,6 @@ $current_state = isset($current_address_parts[2]) ? trim($current_address_parts[
                 <h3><?php echo $user['full_name']; ?></h3>
                 <p><strong>Email:</strong> <?php echo $user['email']; ?></p><br>
 
-                <!-- Date of Birth -->
                 <label for="date_of_birth">Date of Birth:</label>
                 <input type="date" name="date_of_birth" id="date_of_birth" 
                        value="<?php echo $user['date_of_birth']; ?>" required>
