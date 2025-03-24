@@ -1,14 +1,10 @@
 <?php
 session_start();
 include('../config/database.php');
-
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
-
-// Fetch user details
 $user_id = $_SESSION['user_id'];
 $query = "SELECT * FROM users WHERE id=$user_id";
 $result = $conn->query($query);
