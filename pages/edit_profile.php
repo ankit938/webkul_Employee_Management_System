@@ -18,17 +18,15 @@ if ($result->num_rows > 0) {
     exit;
 }
 
-// Handle profile update
 if (isset($_POST['update_profile'])) {
     $age = $_POST['age'];
     $qualifications = implode(',', $_POST['qualifications']);
     $experiences = implode(',', $_POST['experiences']);
     $permanent_address = $_POST['permanent_address_line1'] . ', ' . $_POST['permanent_city'] . ', ' . $_POST['permanent_state'];
     $current_address = $_POST['current_address_line1'] . ', ' . $_POST['current_city'] . ', ' . $_POST['current_state'];
-    $date_of_birth = $_POST['date_of_birth']; // Get the updated date of birth
+    $date_of_birth = $_POST['date_of_birth']; 
     
     if (!empty($_FILES['profile_picture']['name'])) {
-        // Handle profile picture upload
         $profile_picture = $_FILES['profile_picture']['name'];
         $target_dir = "../uploads/";
         $target_file = $target_dir . basename($profile_picture);
@@ -50,7 +48,6 @@ if (isset($_POST['update_profile'])) {
     }
 }
 
-// **Fix for Undefined Array Key Warning**
 $permanent_address_parts = explode(',', $user['permanent_address']);
 $permanent_state = isset($permanent_address_parts[2]) ? trim($permanent_address_parts[2]) : '';
 
